@@ -71,3 +71,11 @@
 
 //////////////////////////////////////
 // functions returning functions
+
+const Greet = (greetings) =>{
+    return((name)=>{console.log(`${greetings},${name}`);});
+}
+
+const Greterhey = Greet('Hey');
+Greterhey('shravan');
+Greet('Hello')('Shravan');
