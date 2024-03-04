@@ -64,94 +64,121 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+ const displayMovements = (movements) =>{
 
+  containerMovements.innerHTML = '';
+
+  movements.forEach((mov,i)=>{
+    const type = mov > 0 ? "deposit" : "withdrawal";
+const html = ` <div class="movements__row">
+<div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+<div class="movements__value">${mov}</div>`;
+  containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+ };
+
+ displayMovements(account1.movements);
+
+ const createUsernames = (accs) =>{
+accs.forEach(acc => {
+acc.username = acc.owner
+.toLowerCase()
+.split('')
+.map(name => name[0])
+.join('');
+});
+ };
+ createUsernames(accounts);
+console.log(createUsernames(accounts) , "user name created..")
 
 /////////////////////////////////////////////////
 
 //slice method
 
-const arr = ['a','b','c','d','e','f','g','h']
-console.log(arr);
-console.log(arr.slice(2)); // ['removed' 'b','c','d','e','f','g','h'].
-console.log(arr.slice(4)); // first four removed.
-console.log(arr.slice(-3)); // ['f','g','h'] last three printed.
-console.log([...arr]) // ['a','b','c','d','e','f','g','h'] full array printed by useing spread oparetor.
-console.log([...arr].splice(-2)) // last two elements printed.
-console.log(arr); // array is not muteted full data will load => ['a','b','c','d','e','f','g','h']
+// const arr = ['a','b','c','d','e','f','g','h']
+// console.log(arr);
+// console.log(arr.slice(2)); // ['removed' 'b','c','d','e','f','g','h'].
+// console.log(arr.slice(4)); // first four removed.
+// console.log(arr.slice(-3)); // ['f','g','h'] last three printed.
+// console.log([...arr]) // ['a','b','c','d','e','f','g','h'] full array printed by useing spread oparetor.
+// console.log([...arr].splice(-2)) // last two elements printed.
+// console.log(arr); // array is not muteted full data will load => ['a','b','c','d','e','f','g','h']
 
-// splice method = same like slice but muteted.
-console.log(arr.splice(4));  // ['e','f','g','h'].
-console.log(arr) // ['a','b','c','d'] last four elements removed from original array.
-console.log(arr.splice(1,2)) // ['b','c'] element one deleted , next two are printed , rest elements ignored.
-console.log(arr) // ['a','d'] finailly remaing elements printed, after mutetion.
+// // splice method = same like slice but muteted.
+// console.log(arr.splice(4));  // ['e','f','g','h'].
+// console.log(arr) // ['a','b','c','d'] last four elements removed from original array.
+// console.log(arr.splice(1,2)) // ['b','c'] element one deleted , next two are printed , rest elements ignored.
+// console.log(arr) // ['a','d'] finailly remaing elements printed, after mutetion.
 
-// reverse method
-const arr2 = ['a','b','c','d','e','f','g','h']
-console.log(arr2.reverse()) // eleements are all reversed.
-console.log(arr2) // muteted array not a original one.
+// // reverse method
+// const arr2 = ['a','b','c','d','e','f','g','h']
+// console.log(arr2.reverse()) // eleements are all reversed.
+// console.log(arr2) // muteted array not a original one.
 
-// concat method
-const result = arr.concat(arr2)
-console.log(result) 
-console.log([...arr, ...arr2]) // above both results are same
+// // concat method
+// const result = arr.concat(arr2)
+// console.log(result) 
+// console.log([...arr, ...arr2]) // above both results are same
 
-//JOIN method
-console.log(result.join('-')) // a-d-h-g-f-e-d-c-b-a "adding all the elements with - " more push, pop, ...etc follow MDN docs.
+// //JOIN method
+// console.log(result.join('-')) // a-d-h-g-f-e-d-c-b-a "adding all the elements with - " more push, pop, ...etc follow MDN docs.
 
-// New Method at
-const arr3 = [23, 54, 78];
-console.log(arr3[0]) // 23
-console.log(arr3.at(0)) // 23 same result 
-console.log(arr3.length) // 3
-console.log(arr3.length-1) // 2
-console.log(arr3[arr3.length - 1]) // 78 taking last element
-console.log(arr3.slice(-1)) // [78] taking last element and print array
+// // New Method at
+// const arr3 = [23, 54, 78];
+// console.log(arr3[0]) // 23
+// console.log(arr3.at(0)) // 23 same result 
+// console.log(arr3.length) // 3
+// console.log(arr3.length-1) // 2
+// console.log(arr3[arr3.length - 1]) // 78 taking last element
+// console.log(arr3.slice(-1)) // [78] taking last element and print array
 
-console.log(arr3.at(-2)) // 54 taking second element from lase
-console.log('shravan'.at(0)) // s printed
-console.log('shravan'.at(-1)) // n printed
+// console.log(arr3.at(-2)) // 54 taking second element from lase
+// console.log('shravan'.at(0)) // s printed
+// console.log('shravan'.at(-1)) // n printed
 
-// Looping forEach Method
+// // Looping forEach Method
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const usdToeuroConversion = 1.1;
+// const test = movements.map(mov => Math.floor(mov * usdToeuroConversion));
+// console.log(test ,"testing the movements")
+// // Treditional method
+// for(const movement of movements){
+//   if(movement > 0){
+//    console.log(`you are diposited money ${movement} succesfully`)
+//   }else{
+//     console.log(`you are withdrew money ${movement} succesfully`)
+//   }
+// }
+// console.log(".......................seperated by two methods and the expected same result.......")
+// // by useing forEach loop
+// movements.forEach((movement , i)=>{
+//   if(movement > 0){
+//     console.log(` Movement ${i + 1}: you are diposited money ${movement} succesfully`) // indexing and access the array
+//   }else{
+//     console.log(`Movement ${i + 1}: you are withdrew money ${movement} succesfully`)
+//   }
+// })
 
-// Treditional method
-for(const movement of movements){
-  if(movement > 0){
-   console.log(`you are diposited money ${movement} succesfully`)
-  }else{
-    console.log(`you are withdrew money ${movement} succesfully`)
-  }
-}
-console.log(".......................seperated by two methods and the expected same result.......")
-// by useing forEach loop
-movements.forEach((movement , i)=>{
-  if(movement > 0){
-    console.log(` Movement ${i + 1}: you are diposited money ${movement} succesfully`) // indexing and access the array
-  }else{
-    console.log(`Movement ${i + 1}: you are withdrew money ${movement} succesfully`)
-  }
-})
+// // set method
 
-// set method
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// // itetrating array and printing
+// currencies.forEach((value, key, map)=>{console.log(`${key}:${value}`)}) 
+// // USD:United States dollar
+// // EUR:Euro
+// // GBP:Pound sterling
+// // taking as a arguments and printing key and value.
 
-// itetrating array and printing
-currencies.forEach((value, key, map)=>{console.log(`${key}:${value}`)}) 
-// USD:United States dollar
-// EUR:Euro
-// GBP:Pound sterling
-// taking as a arguments and printing key and value.
+// const uniqueCurrencies = new Set(['usd','euro', 'inr', 'myr', 'euro']);
+// console.log(uniqueCurrencies) // by useing this method only unique values are taken
 
-const uniqueCurrencies = new Set(['usd','euro', 'inr', 'myr', 'euro']);
-console.log(uniqueCurrencies) // by useing this method only unique values are taken
-
-uniqueCurrencies.forEach((value, _, map)=>{console.log(`${value}:${value}`)}) // -_ taken as a key
+// uniqueCurrencies.forEach((value, _, map)=>{console.log(`${value}:${value}`)}) // -_ taken as a key
 
 
 
