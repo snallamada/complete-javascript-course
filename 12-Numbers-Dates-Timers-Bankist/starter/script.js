@@ -251,3 +251,37 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+//Practice by me
+
+console.log(Math.sqrt(25)) // 5
+console.log(25 ** (1 / 2)) // 5
+
+//quebic root
+console.log(8 ** (1 / 3)) // 2
+
+//max
+console.log(Math.max(1, 4, 7, 9, 89, 30, 75, 98)) // 98
+
+// min 
+console.log(Math.min(1, 4, 7, 9, 89, 30, 75, 98)) // 1
+
+//random function 
+console.log(Math.trunc(Math.random() * 100 + 1)) // out put 1 to 99 within
+
+//function
+const calCulation = ( min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
+console.log(calCulation(40, 200))
+
+// Rounding decimals
+console.log((2.7).toFixed(0)) // ans: 3 but string
+console.log((2.7555).toFixed(2)) // ans: 2.75 but string take two decimals
+console.log(+(2.7555).toFixed(2)) // ans: 2.75 but number take two decimals with + oparator it changed to number.
+
+// Remainder = Bhagaphalam
+console.log(7 % 3)
+
+
+
+
+
